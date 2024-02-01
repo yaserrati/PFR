@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alkasba Store</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            max-width: 800px;
+            width: 100%;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            margin-bottom: 20px;
+        }
+
+        .search-bar {
+            width: 70%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .search-button {
+            background-color: #FF9900;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .search-button:hover {
+            background-color: #FFD699;
+        }
+
+        .recommendations {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .product-card {
+            margin: 10px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            text-align: center;
+        }
+
+        .product-img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+
+        .product-name {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Alkasba Store - Your Bio World</h1>
+            <p>Discover bio-friendly products tailored for you!</p>
+        </div>
+        <form action="/recommendation/user" method="GET">
+            <input type="text" class="search-bar" name="userId" placeholder="Enter User ID">
+            <br>
+            <button type="submit" class="search-button">Get Recommendations</button>
+        </form>
+
+        <div class="recommendations" id="recommendations">
+            <!-- Product cards will be dynamically added here -->
+        </div>
+    </div>
+
+    <script>
+        // Dummy data for product recommendations (replace with actual data)
+        const dummyRecommendations = [
+            // { id: 1, name: "Product 1", img_link: "https://www.aquaportail.com/pictures1012/phones/ecostick-purety.jpg" },
+            // { id: 2, name: "Product 2", img_link: "https://www.aquaportail.com/pictures1012/phones/ecostick-purety.jpg" },
+        ];
+
+        // Function to dynamically generate product cards
+        function generateProductCards(products) {
+            const recommendationsContainer = document.getElementById("recommendations");
+            recommendationsContainer.innerHTML = ""; // Clear previous content
+
+            products.forEach(product => {
+                const productCard = document.createElement("div");
+                productCard.classList.add("product-card");
+
+                const productImg = document.createElement("img");
+                productImg.classList.add("product-img");
+                productImg.src = product.img_link;
+                productImg.alt = product.name;
+
+                const productName = document.createElement("div");
+                productName.classList.add("product-name");
+                productName.textContent = product.name;
+
+                productCard.appendChild(productImg);
+                productCard.appendChild(productName);
+
+                recommendationsContainer.appendChild(productCard);
+            });
+        }
+
+        // Triggered when the form is submitted
+        document.querySelector("form").addEventListener("submit", function (event) {
+            event.preventDefault();
+            
+            // Replace this with actual API call to fetch recommendations
+            const userId = document.querySelector(".search-bar").value;
+            // Simulating API call
+            const recommendations = dummyRecommendations;
+
+            generateProductCards(recommendations);
+        });
+    </script>
+</body>
+
+</html>

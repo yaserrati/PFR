@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Recommendations</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8; /* Same background color as the index page */
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            padding: 10px;
+            color: white;
+            text-align: center;
+        }
+
+        section {
+            margin: 20px;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        .product-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .product-card {
+            width: 30%;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            padding: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-img {
+            width: 100%;
+            max-height: 150px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .product-details {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1 style="color: #FF9900;">Product Recommendations</h1> <!-- Use the same accent color as the index page -->
+</header>
+
+<section>
+    <h2>Top Recommendations</h2>
+    <div class="product-container">
+        <!-- Use the same color styles for product cards as the index page -->
+        {% for product in products %}
+            <div class="product-card">
+                <img class="product-img" src="{{ product['img_link'] }}" alt="{{ product['name'] }}">
+                <div class="product-details">
+                    <p style="color: #333;"><strong>Product ID:</strong> {{ product['id'] }}</p>
+                    <p style="color: #333;"><strong>Product Name:</strong> {{ product['name'] }}</p>
+                    <p style="color: #333;"><strong>Date of Production:</strong> {{ product['date_production'] }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+
+</body>
+
+</html>
