@@ -1,87 +1,56 @@
-# Project Overview
+# Data Pipeline for Alkasba Store
 
-## Project Needs:
+![Project Image]([path/to/your/image.png](https://cdn.discordapp.com/attachments/1108029638032244766/1202906716128157767/Fluxdeprojet.gif?ex=65cf292e&is=65bcb42e&hm=31f2e176b6ed7674c914c4941daa000a22a857e9beecc1c69beb6863ec8bf97a&))
 
-This project addresses the need for efficient data processing, transformation, and visualization, focusing on business intelligence and data governance.
+## Overview
 
-## Technical Framework:
+This project focuses on building a robust data pipeline for Alkasba Store, an e-commerce platform specializing in herbal and plant-based products. The pipeline extracts, processes, and analyzes data to enhance sales and uncover valuable insights for the business.
 
-### 1st Workflow:
+## Project Components
 
-1. **Data Extraction:**
-   - Extract data from various sources, including APIs, CSV, JSON, and databases.
+### 1. Workflows
 
-2. **Data Transformation:**
-   - Merge data frames.
-   - Remove duplicates.
-   - Handle null values.
-   - Standardize column names.
-   - GDPR Compliance: Encrypt sensitive user data (name, phone number, email, address).
+#### 1st Workflow
 
-3. **Loading into Data Warehouse:**
-   - Design Fast Constellation Schema.
-   - Create data warehouse.
-   - Define tables and establish relationships.
-   - Optimize performance.
-   - Implement database roles.
-   - Conduct unit testing.
-   - Create 2 Data Marts.
+- **Data Extraction:** Extracts data from various sources including APIs, CSV, JSON, and databases.
+- **Data Transformation:** Merges data frames, removes duplicates, handles null values, and standardizes column names.
+- **Loading into Data Warehouse:** Designs Fast Constellation Schema, creates data warehouse, defines tables, and establishes relationships.
+- **Power BI Report:** Establishes DirectQuery connections, creates calculated columns, and develops three dashboards.
+- **Business Intelligence (Decisions):** Analyzes sales and inventory data, optimizing warehousing for cost reduction.
+- **Orchestration with Airflow:** Configures Airflow on Docker, defines DAG scripts, and schedules monthly DAG runs.
 
-4. **Power BI Report:**
-   - Establish DirectQuery connections with the two data marts.
-   - Create calculated columns.
-   - Develop 3 dashboards:
-     - Overview dashboard.
-     - Sales dashboard.
-     - Inventories dashboard.
+#### 2nd Workflow - Kafka Integration
 
-5. **Business Intelligence (Decisions):**
-   - Analyze sales data.
-     - Subsection 5.1.1.
-     - Subsection 5.1.2.
-   - Analyze inventory data.
-     - Subsection 5.2.1.
-     - Subsection 5.2.2.
+- **Producer Kafka:** Imports necessary libraries, configures Kafka producer, defines API URL, and continuously fetches and produces data.
+- **Consumer Kafka:** Imports required libraries, configures Kafka consumer, sets up Elasticsearch, processes data, defines Elasticsearch mapping, and indexes data.
 
-6. **Orchestration with Airflow:**
-   - Configure Airflow on Docker.
-   - Define DAG scripts.
-   - Schedule monthly DAG runs.
+### 2. Analysis with Elasticsearch and Kibana
 
-### 2nd Workflow:
+- **Indexation in Elasticsearch:** Data stored in `index_products` for analysis.
+- **Kibana Dashboard:** Comprehensive dashboard with visualizations for a thorough analysis.
+- **Product Recommendation API:** Incorporates ALS machine learning model for personalized product recommendations.
 
-## Producer Module:
+## Confidentiality and Data Governance
 
-1. **Library Importation:**
-2. **Kafka Producer Configuration:**
-3. **API URL Definition:**
-4. **Data Retrieval and Production Function:**
-5. **Main Data Retrieval Loop:**
+- **GDPR Compliance:** Strict adherence to General Data Protection Regulation (GDPR) guidelines.
+- **Data Governance Strategy:** Emphasizes compliance, protection against unauthorized access, regular data purging, transparency, data quality, and continuous improvement.
 
-## Consumer Module:
+## Getting Started
 
-1. **Library Importation:**
-2. **Kafka Consumer Configuration:**
-3. **Elasticsearch Configuration:**
-4. **Data Processing Function:**
-5. **Elasticsearch Index Mapping:**
-6. **Index Creation:**
-7. **Main Kafka Message Processing Loop:**
+1. Clone the repository.
+2. Set up Python environment using `requirements.txt`.
+3. Configure Airflow, Kafka, and other dependencies.
+4. Run data pipeline workflows.
 
-## Analysis with Elasticsearch and Kibana:
+## Usage
 
-- Indexing data into Elasticsearch.
-- Creating Kibana dashboards.
+- Detailed usage instructions can be found in the respective workflow directories.
+- Refer to documentation for API endpoints and data recommendations.
 
-## Movie Recommendation API:
+## Contributing
 
-### Machine Learning Model - ALS
+Contributions are welcome! Please follow our [contribution guidelines](CONTRIBUTING.md).
 
-## Data Privacy and Governance:
+## License
 
-- GDPR Compliance.
-- Data governance strategy.
-
-## Conclusion:
-
-In conclusion, this project encompasses comprehensive data workflows, from extraction to visualization, ensuring GDPR compliance and data governance. The implemented systems provide valuable business intelligence for informed decision-making.
+This project is licensed under the [MIT License](LICENSE).
